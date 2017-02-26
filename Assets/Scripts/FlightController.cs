@@ -17,17 +17,8 @@ public class FlightController : MonoBehaviour {
     }
 
     void HandleInput() {
-        if (Input.GetKey(KeyCode.A)) {
-            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.W)) {
-            transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
-        }
+        float horizontal = -Input.GetAxis("Horizontal") * rotationSpeed;
+        float vertical = -Input.GetAxis("Vertical") * rotationSpeed;
+        transform.Rotate(vertical, 0, horizontal);
     }
 }
