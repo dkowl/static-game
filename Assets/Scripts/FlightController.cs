@@ -5,7 +5,8 @@ using UnityEngine;
 public class FlightController : MonoBehaviour {
 
     public float speed = 0.5f;
-    public float rotationSpeed = 30f;
+    public float horizontalRotationSpeed = 10f;
+    public float verticalRotationSpeed = 10f;
 
 	void Start () {
 		
@@ -17,8 +18,8 @@ public class FlightController : MonoBehaviour {
     }
 
     void HandleInput() {
-        float horizontal = -Input.GetAxis("Horizontal") * rotationSpeed;
-        float vertical = -Input.GetAxis("Vertical") * rotationSpeed;
+        float horizontal = -Input.GetAxis("Horizontal") * horizontalRotationSpeed;
+        float vertical = -Input.GetAxis("Vertical") * verticalRotationSpeed;
         transform.Rotate(vertical, 0, horizontal);
     }
 }
