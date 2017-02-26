@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlightController : MonoBehaviour {
 
     public float speed = 0.5f;
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 30f;
 
 	void Start () {
 		
