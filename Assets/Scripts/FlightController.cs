@@ -13,13 +13,13 @@ public class FlightController : MonoBehaviour {
 	}
 	
 	void Update () {
-        transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+        transform.Translate(-transform.right * speed * Time.deltaTime, Space.World);
         HandleInput();
     }
 
     void HandleInput() {
-        float horizontal = -Input.GetAxis("Horizontal") * horizontalRotationSpeed;
-        float vertical = -Input.GetAxis("Vertical") * verticalRotationSpeed;
-        transform.Rotate(vertical, 0, horizontal);
+        float vertical = -Input.GetAxis("Horizontal") * horizontalRotationSpeed;
+        float horizontal = -Input.GetAxis("Vertical") * verticalRotationSpeed;
+        transform.Rotate(-vertical, 0, -horizontal);
     }
 }
