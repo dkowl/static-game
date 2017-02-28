@@ -18,8 +18,8 @@ public class FlightController : MonoBehaviour {
     }
 
     void HandleInput() {
-        float vertical = -Input.GetAxis("Horizontal") * horizontalRotationSpeed;
-        float horizontal = -Input.GetAxis("Vertical") * verticalRotationSpeed;
-        transform.Rotate(-vertical, 0, -horizontal);
+        float vertical = Input.GetAxis("Horizontal") * horizontalRotationSpeed;
+        float horizontal = Input.GetAxis("Vertical") * verticalRotationSpeed;
+        transform.Rotate(vertical, 0, horizontal);
     }
 }
