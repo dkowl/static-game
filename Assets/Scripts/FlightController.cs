@@ -7,10 +7,6 @@ public class FlightController : MonoBehaviour {
     public float speed = 0.5f;
     public float horizontalRotationSpeed = 10f;
     public float verticalRotationSpeed = 10f;
-
-	void Start () {
-		
-	}
 	
 	void Update () {
         transform.Translate(-transform.right * speed * Time.deltaTime, Space.World);
