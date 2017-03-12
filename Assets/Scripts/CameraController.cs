@@ -11,20 +11,11 @@ public class CameraController : MonoBehaviour {
 
 	void Start () {
         offset = transform.position - target.transform.position;
-        
     }
-    Quaternion rot1 = Quaternion.identity;
-	void LateUpdate () {
-        Quaternion rot2 = target.transform.rotation;
-        Quaternion rotation = Quaternion.Lerp(rot1, rot2, damp);
-        rot1 = rot2;
-        transform.position = target.transform.position + (rotation * offset);
-        //transform.position = target.transform.position + (target.transform.rotation * offset);
 
+	void LateUpdate () {
+        Vector3 desiredPosition = target.transform.position + (target.transform.rotation * offset);
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * damp);
         transform.LookAt(target.transform, target.transform.up);
-        //Quaternion rot = target.transform.rotation;
-        //Debug.Log(target.transform.rotation.x);
-        //transform.Rotate(0, 0, -Input.GetAxis("Horizontal") * target.GetComponent<FlightController>().horizontalRotationSpeed);
-        //transform.Rotate(target.transform.eulerAngles.x, 0, 0, Space.World);
     }
 }
