@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public GameObject target;
+    public GameObject Spacecraft;
     public float damping;
 
+    private float factor = 0.04f;
     private Vector3 offset;
+    private FlightController flightController;
 
-	void Start () {
-        offset = transform.position - target.transform.position;
+    void Start () {
+        flightController = FindObjectOfType<FlightController>();
+        offset = transform.position - Spacecraft.transform.position;
     }
 
 	void LateUpdate () {
-        Vector3 desiredPosition = target.transform.position + (target.transform.rotation * offset);
+        Vector3 escalation = offset + new Vector3(flightController.speed*factor, flightController.speed * factor*0.8f, 0);
+        Vector3 desiredPosition = Spacecraft.transform.position + (Spacecraft.transform.rotation * escalation);
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * damping);
-        transform.LookAt(target.transform, target.transform.up);
+        transform.LookAt(Spacecraft.transform, Spacecraft.transform.up);
     }
 }
