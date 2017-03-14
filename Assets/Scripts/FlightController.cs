@@ -12,6 +12,8 @@ public class FlightController : MonoBehaviour {
     public float verticalRotationSpeed = 10f;
     public float turningSpeed = 5f;
 
+    public bool isPiloted = false;
+
     private float speedChange;
 
     void Update () {
@@ -20,16 +22,22 @@ public class FlightController : MonoBehaviour {
     }
 
     void HandleTurningInput() {
-        float vertical = Input.GetAxis("Horizontal") * horizontalRotationSpeed;
-        float horizontal = Input.GetAxis("Vertical") * verticalRotationSpeed;
-        float turning = Input.GetAxis("Turning") * turningSpeed;
-        transform.Rotate(vertical, turning, horizontal);
+        if (isPiloted)
+        {
+            float vertical = Input.GetAxis("Horizontal") * horizontalRotationSpeed;
+            float horizontal = Input.GetAxis("Vertical") * verticalRotationSpeed;
+            float turning = Input.GetAxis("Turning") * turningSpeed;
+            transform.Rotate(vertical, turning, horizontal);
+        }
     }
 
     void HandleSpeedInput() {
-        HandleAcceleration();
-        HandleBraking();
-        HandleSpeedChange();
+        if (isPiloted)
+        {
+            HandleAcceleration();
+            HandleBraking();
+            HandleSpeedChange();
+        }
     }
     
     void HandleAcceleration() {
