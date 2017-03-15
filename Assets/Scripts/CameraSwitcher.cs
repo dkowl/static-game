@@ -16,7 +16,6 @@ public class CameraSwitcher : MonoBehaviour {
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.C))
         {
             playerCam.enabled = !playerCam.enabled;

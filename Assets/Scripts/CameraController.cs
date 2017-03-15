@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour {
     private FlightController flightController;
 
     void Start () {
-        flightController = FindObjectOfType<FlightController>();
+        flightController = Spacecraft.GetComponent<FlightController>();
         offset = transform.position - Spacecraft.transform.position;
     }
 
