@@ -6,7 +6,6 @@ public class CameraSwitcher : MonoBehaviour {
 
     public Camera shipCam;
     public Camera playerCam;
-
  
     void Start()
     {
