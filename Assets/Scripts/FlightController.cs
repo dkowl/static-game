@@ -17,9 +17,19 @@ public class FlightController : MonoBehaviour {
     private float speedChange;
 
     void Update () {
-        if (isPiloted) {
+        HandleSpeedInput();
+        if (isPiloted)
+        {
             HandleTurningInput();
-            HandleSpeedInput();
+        }
+        else
+        {
+            speedChange = decceleration * Time.deltaTime;
+            if (speed < speedChange)
+            {
+                speedChange = speed;
+            }
+            speed -= speedChange;
         }
     }
 
@@ -38,7 +48,7 @@ public class FlightController : MonoBehaviour {
     
     void HandleAcceleration() {
         speedChange = acceleration * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && speed <= maxSpeed) {
+        if (Input.GetKey(KeyCode.Space) && speed <= maxSpeed && isPiloted) {
             float diff = maxSpeed - speed;
             if (diff < acceleration) {
                 speedChange = diff;
